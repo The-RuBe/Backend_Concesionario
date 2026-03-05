@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class ConcesionarioService {
 
-    //Prueba de comentario:
     @Autowired
     private ConcesionarioRepository concesionarioRepository;
 
@@ -18,10 +17,10 @@ public class ConcesionarioService {
         return this.concesionarioRepository.findAll();
     }
 
-    public List<Concesionario> findByCategoria(final String categoria){
+    public List<Concesionario> findByNombre(final String nombre) {
         return this.findAll()
                 .stream()
-                .filter(a -> a.getConcesionario().getNombre().equalsIgnoreCase(categoria))
+                .filter(a -> a.getNombre().equalsIgnoreCase(nombre))
                 .toList();
     }
 

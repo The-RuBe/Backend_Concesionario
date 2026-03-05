@@ -4,29 +4,37 @@ import ies.alcores.backend_concesionario.model.Vehiculo;
 import ies.alcores.backend_concesionario.service.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/productos")
+@RequestMapping("/api/vehiculos")
 public class VehiculoController {
-
-    //Esto es un controlador
 
     @Autowired
     private VehiculoService vehiculoService;
 
-    @GetMapping("")
-    public ResponseEntity<List<Vehiculo>> findAll(){
+    @GetMapping
+    public ResponseEntity<List<Vehiculo>> listarTodos() {
         return ResponseEntity.ok(this.vehiculoService.findAll());
     }
 
-    @GetMapping("categoria/{nombreCat}")
-    public ResponseEntity<List<Vehiculo>> findByCategoria(@PathVariable String nombreCat){
-        return ResponseEntity.ok(this.vehiculoService.findByConcesionario(nombreCat));
+    @GetMapping("/{matricula}")
+    public ResponseEntity<Vehiculo> buscarPorMatricula(@PathVariable String matricula) {
+        return this.vehiculoService.findById(matricula)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<Vehiculo> insertarVehiculo(@RequestBody Vehiculo vehiculo) {
+        return ResponseEntity.ok(this.vehiculoService.save(vehiculo));
+    }
+
+    @DeleteMapping("/{matricula}")
+    public ResponseEntity<Void> borrarVehiculo(@PathVariable String matricula) {
+        this.vehiculoService.deleteById(matricula);
+        return ResponseEntity.noContent().build();
     }
 }

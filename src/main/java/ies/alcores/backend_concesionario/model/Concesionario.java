@@ -12,7 +12,7 @@ import java.util.List;
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        private Long id;
 
         @Column(unique = true, nullable = false, length = 15)
         private String cif;
@@ -22,12 +22,9 @@ import java.util.List;
 
         private String ubicacion;
 
-        @Column(name = "numero_vehiculos")
         private Integer numeroVehiculos;
 
-        // La clave de la relación uno a muchos
-        @OneToMany(mappedBy = "concesionario", cascade = CascadeType.ALL)
+        @OneToMany(mappedBy = "concesionario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Vehiculo> vehiculos;
 
-        // Constructores, getters y setters omitidos para mantener el código limpio
     }
