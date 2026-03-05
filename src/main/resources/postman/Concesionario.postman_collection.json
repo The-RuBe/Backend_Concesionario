@@ -19,7 +19,19 @@
       "name": "Listar_Vehiculos",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/vehiculos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "vehiculos"
+          ]
+        }
       },
       "response": []
     },
@@ -27,7 +39,20 @@
       "name": "Buscar_Vehiculos",
       "request": {
         "method": "GET",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/vehiculos/1234BCF",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "vehiculos",
+            "1234BCF"
+          ]
+        }
       },
       "response": []
     },
@@ -36,6 +61,15 @@
       "request": {
         "method": "POST",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"matricula\": \"9999ZZZ\",\r\n    \"marca\": \"Renault\",\r\n    \"color\": \"Gris\",\r\n    \"potencia\": 100,\r\n    \"precio\": 15000.00\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
           "raw": "http://localhost:8080/api/vehiculos",
           "protocol": "http",
@@ -55,7 +89,20 @@
       "name": "Borrar_Vehiculo",
       "request": {
         "method": "DELETE",
-        "header": []
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/vehiculos/9999ZZZ",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "vehiculos",
+            "9999ZZZ"
+          ]
+        }
       },
       "response": []
     }
