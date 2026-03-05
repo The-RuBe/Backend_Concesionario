@@ -29,12 +29,13 @@ public class VehiculoController {
 
     @PostMapping
     public ResponseEntity<Vehiculo> insertarVehiculo(@RequestBody Vehiculo vehiculo) {
-        return ResponseEntity.ok(this.vehiculoService.save(vehiculo));
+        this.vehiculoService.insertarVehiculo(vehiculo);
+        return ResponseEntity.ok(vehiculo);
     }
 
     @DeleteMapping("/{matricula}")
     public ResponseEntity<Void> borrarVehiculo(@PathVariable String matricula) {
-        this.vehiculoService.deleteById(matricula);
+        this.vehiculoService.borrarVehiculo(matricula);
         return ResponseEntity.noContent().build();
     }
 }

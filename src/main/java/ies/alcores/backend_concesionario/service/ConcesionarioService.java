@@ -13,15 +13,7 @@ public class ConcesionarioService {
     @Autowired
     private ConcesionarioRepository concesionarioRepository;
 
-    public List<Concesionario> findAll(){
-        return this.concesionarioRepository.findAll();
+    public List<Concesionario> findAll() {
+        return this.concesionarioRepository.listarTodos();
     }
-
-    public List<Concesionario> findByNombre(final String nombre) {
-        return this.findAll()
-                .stream()
-                .filter(a -> a.getNombre().equalsIgnoreCase(nombre))
-                .toList();
-    }
-
 }

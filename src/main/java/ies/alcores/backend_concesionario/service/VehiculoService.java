@@ -15,18 +15,18 @@ public class VehiculoService {
     private VehiculoRepository vehiculoRepository;
 
     public List<Vehiculo> findAll() {
-        return this.vehiculoRepository.findAll();
+        return this.vehiculoRepository.listarTodos();
     }
 
     public Optional<Vehiculo> findById(String matricula) {
-        return this.vehiculoRepository.findById(matricula);
+        return this.vehiculoRepository.buscarPorMatricula(matricula);
     }
 
-    public Vehiculo save(Vehiculo vehiculo) {
-        return this.vehiculoRepository.save(vehiculo);
+    public void insertarVehiculo(Vehiculo v) {
+        this.vehiculoRepository.insertar(v.getMatricula(), v.getMarca(), v.getColor(), v.getPotencia(), v.getPrecio());
     }
 
-    public void deleteById(String matricula) {
-        this.vehiculoRepository.deleteById(matricula);
+    public void borrarVehiculo(String matricula) {
+        this.vehiculoRepository.borrar(matricula);
     }
 }
